@@ -47,7 +47,7 @@ namespace ConstantsExample
                                     globalStartTime.ToShortTimeString());
         }
 
-        public override string? ToString()
+        public override string ToString()
         {
             TimeSpan elapsedTime = DateTime.Now - globalStartTime;
             return $"Route: {this.RouteNumber} started {elapsedTime.Milliseconds} pseudo-minutes after global start time {globalStartTime.ToShortTimeString()}";
