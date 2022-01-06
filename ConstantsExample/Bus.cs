@@ -41,7 +41,7 @@ namespace ConstantsExample
 
             // For demonstration purposes we treat milliseconds as minutes to simulate
             // actual bus times. Do not do this in your actual bus schedule program!
-            Console.WriteLine("{0} is starting its route {1:N2} minutes after global start time {2}.",
+            Console.WriteLine("{0} is starting its route {1:N2} pseudo-minutes after global start time {2}.",
                                     this.RouteNumber,
                                     elapsedTime.Milliseconds,
                                     globalStartTime.ToShortTimeString());
@@ -50,7 +50,8 @@ namespace ConstantsExample
         public override string ToString()
         {
             TimeSpan elapsedTime = DateTime.Now - globalStartTime;
-            return $"Route: {this.RouteNumber} started {elapsedTime.Milliseconds} pseudo-minutes after global start time {globalStartTime.ToShortTimeString()}";
+            return $"Route: {this.RouteNumber} started {elapsedTime.Milliseconds} " +
+                $"pseudo-minutes after global start time {globalStartTime.ToShortTimeString()}";
         }
     }
 }
