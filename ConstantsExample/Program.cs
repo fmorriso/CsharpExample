@@ -6,6 +6,7 @@ namespace ConstantsExample
     {
         static void Main(string[] args)
         {
+
             // static constructor example
             Console.WriteLine(BankAccount.ACCOUNT_NUMBER);
 
