@@ -4,7 +4,7 @@
     public class BankAccount
     {
         public readonly static string ACCOUNT_NUMBER;
-        private double balance;
+        public double balance {  get => balance; private set => balance = value; }
 
         static BankAccount()
         {

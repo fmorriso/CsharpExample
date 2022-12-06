@@ -8,13 +8,13 @@ namespace ConstantsExample
         {
             IntegerFun();
 
-            IntegerOverflow();
+            //IntegerOverflow();
 
-            UnsignedFun();
+            //UnsignedFun();
 
-            StringFun();
+            //StringFun();
 
-            CityBusFun();
+            //CityBusFun();
 
             Console.WriteLine("press any key to close");
             Console.ReadKey();
