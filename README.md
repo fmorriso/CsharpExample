@@ -1,2 +1,2 @@
-# C# Constants Example
+# C# Example
 examples of various C# techniques
