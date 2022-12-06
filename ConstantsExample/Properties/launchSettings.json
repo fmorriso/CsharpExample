@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ConstantsExample": {
+      "commandName": "Project",
+      "hotReloadEnabled": false
+    }
+  }
+}
