@@ -6,7 +6,7 @@ namespace ConstantsExample
     {
         static void Main(string[] args)
         {
-            IntegerFun();
+            //IntegerFun();
 
             //IntegerOverflow();
 
@@ -14,13 +14,17 @@ namespace ConstantsExample
 
             //StringFun();
 
-            //CityBusFun();
+            CityBusFun();
 
             Console.WriteLine("press any key to close");
             Console.ReadKey();
             Environment.Exit(0);
         }
 
+        /// <summary>
+        /// Demonstrates using custom classes, including one that has a 
+        /// special static variable.
+        /// </summary>
         private static void CityBusFun()
         {
             // static constructor example
@@ -42,8 +46,16 @@ namespace ConstantsExample
 
             // Send bus2 on its way.
             bus2.Drive();
-        }
 
+            // use fatory method to create a buss
+            Bus bus3 = Bus.CreateBuss(73);
+            Thread.Sleep(20);
+            bus3.Drive();
+        }
+        
+        /// <summary>
+        /// Demonsrates various techniques that can be used with strings
+        /// </summary>
         private static void StringFun()
         {
             string test = "abc";
@@ -59,6 +71,10 @@ namespace ConstantsExample
             }
         }
 
+        /// <summary>
+        /// Demonstrates various techniques that can be used with
+        /// unsigned whole numbers
+        /// </summary>
         private static void UnsignedFun()
         {
             // example of unsigned primitives when you know you will never
@@ -75,34 +91,41 @@ namespace ConstantsExample
             Console.WriteLine($"USA national debt is approximately {nationalDebt:n0}");
         }
 
+        /// <summary>
+        /// Demonstrates various techniques of controlling integer
+        /// overflow.
+        /// </summary>
         private static void IntegerOverflow()
         {
             // example of integer overflow (result too big to fit into 32 bits)
             int j = Int32.MaxValue;
             int k = int.MaxValue;
+
             // first, prove that primitive and class versions of MaxValue are the same
             Console.WriteLine($"j={j:n0}, k={k:n0}");
             try
             {
                 checked
                 {
-                    int result = j * k; // should be too big to fit into 32 bits
+                    int product = j * k; // should be too big to fit into 32 bits
                 }
             }
             catch (Exception ex)
             {
-
                 Console.WriteLine($"Ignoring integer overflow: {ex.Message}");
             }
 
             // use of unchecked to allow 32-bit overflow to be ignored
             unchecked
             {
-                int result = j * k; // should be too big to fit into 32 bits
-                Console.WriteLine($"unchecked result = {result}");
+                int product = j * k; // should be too big to fit into 32 bits
+                Console.WriteLine($"unchecked result = {product}");
             }
         }
 
+        /// <summary>
+        /// Examples of printing integer values
+        /// </summary>
         private static void IntegerFun()
         {
             int i = 54321;

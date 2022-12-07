@@ -32,6 +32,16 @@ namespace ConstantsExample
             Console.WriteLine("Bus #{0} is created.", RouteNumber);
         }
 
+        /// <summary>
+        /// Example of a 
+        /// </summary>
+        /// <param name="routeNum"></param>
+        /// <returns></returns>
+        public static Bus CreateBuss(int routeNum)
+        {
+            return new Bus(routeNum);
+        }
+
         // Instance method.
         public void Drive()
         {
