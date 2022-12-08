@@ -6,7 +6,7 @@ namespace ConstantsExample
     {
         static void Main(string[] args)
         {
-            //IntegerFun();
+            IntegerFun();
 
             //IntegerOverflow();
 
@@ -14,10 +14,10 @@ namespace ConstantsExample
 
             //StringFun();
 
-            CityBusFun();
+            //CityBusFun();
 
             Console.WriteLine("press any key to close");
-            Console.ReadKey();
+            ConsoleKeyInfo key = Console.ReadKey();
             Environment.Exit(0);
         }
 
@@ -42,13 +42,13 @@ namespace ConstantsExample
             bus1.Drive();
 
             // Wait for bus2 to warm up.
-            System.Threading.Thread.Sleep(25);
+            Thread.Sleep(25);
 
             // Send bus2 on its way.
             bus2.Drive();
 
-            // use fatory method to create a buss
-            Bus bus3 = Bus.CreateBuss(73);
+            // use fatory method to create a bus
+            Bus bus3 = Bus.CreateBus(73);
             Thread.Sleep(20);
             bus3.Drive();
         }
@@ -59,13 +59,13 @@ namespace ConstantsExample
         private static void StringFun()
         {
             string test = "abc";
-            if (string.IsNullOrEmpty(test))
+            if (string.IsNullOrEmpty(test)) // ""
             {
                 Console.WriteLine("it was null or empty");
             }
 
             test = " ";
-            if (string.IsNullOrWhiteSpace(test) && test != null)
+            if (String.IsNullOrWhiteSpace(test) && test != null)
             {
                 Console.WriteLine("it was whitespace");
             }
@@ -108,6 +108,7 @@ namespace ConstantsExample
                 checked
                 {
                     int product = j * k; // should be too big to fit into 32 bits
+                    //Console.WriteLine($"checked result = {product}");
                 }
             }
             catch (Exception ex)
@@ -133,6 +134,7 @@ namespace ConstantsExample
 
             // following is analagous to str(i) in Python:
             Console.WriteLine(Convert.ToString(i) + " is a number");
+            Console.WriteLine(i.ToString() + " is a number");
 
             // following is analagous to print(f"{i} is a number") in Python:
             Console.WriteLine($"{i:n0} is a number");

@@ -1,4 +1,5 @@
-﻿using System;
+﻿//#define USE_STRING_BUILDER
+using System;
 using System.Text;
 
 namespace ConstantsExample
@@ -33,11 +34,11 @@ namespace ConstantsExample
         }
 
         /// <summary>
-        /// Example of a 
+        /// Example of a Factory Method
         /// </summary>
         /// <param name="routeNum"></param>
         /// <returns></returns>
-        public static Bus CreateBuss(int routeNum)
+        public static Bus CreateBus(int routeNum)
         {
             return new Bus(routeNum);
         }
@@ -50,24 +51,30 @@ namespace ConstantsExample
             // For demonstration purposes we treat milliseconds as minutes to simulate
             // actual bus times. Do not do this in your actual bus schedule program!
             Console.WriteLine("{0} is starting its route {1:N2} pseudo-minutes after global start time {2}.",
-                                    this.RouteNumber,
-                                    elapsedTime.Milliseconds,
-                                    GLOBAL_START_TIME.ToShortTimeString());
+                                    this.RouteNumber, // {0}
+                                    elapsedTime.Milliseconds, // {1}
+                                    GLOBAL_START_TIME.ToShortTimeString()); // {2}
         }
 
+        /// <summary>
+        /// Override ToString to allow us to easily print information
+        /// about an instance of this class.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             TimeSpan elapsedTime = DateTime.UtcNow - GLOBAL_START_TIME;
+#if USE_STRING_BUILDER
             StringBuilder sbr = new StringBuilder()
                 .Append($@"Route: {this.RouteNumber}")
-                .Append($@" started {elapsedTime.Milliseconds}")
+                .Append($@" started {elapsedTime.Milliseconds:n0}")
                 .Append($@" pseudo-minutes after global start time {GLOBAL_START_TIME.ToLongTimeString()}")
                 ;
             return sbr.ToString();
-            /*
-            return  $@"Route: {this.RouteNumber} started {elapsedTime.Milliseconds} "
-                  + $@"pseudo-minutes after global start time {GLOBAL_START_TIME.ToLongTimeString()}";   
-            */
+#else
+            return  $"Route: {this.RouteNumber} started {elapsedTime.Milliseconds:n0} "
+                  + $"pseudo-minutes after global start time {GLOBAL_START_TIME.ToLongTimeString()}";
+#endif
         }
     }
 }
